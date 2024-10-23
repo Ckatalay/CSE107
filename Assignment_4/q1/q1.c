@@ -43,7 +43,20 @@ int fact(int n)
 int get_int(char *prompt)
 {
     int i;
-    printf("%s", prompt);
-    scanf("%i", &i);
+    char c;
+    while (1)
+    {
+        printf("%s", prompt);
+        if (scanf("%i", &i) == 1)
+        {
+            // Valid integer input
+            break;
+        }
+        else
+        {
+            // Invalid input, clear the buffer
+            while ((c = getchar()) != '\n' && c != EOF);
+        }
+    }
     return i;
 }
