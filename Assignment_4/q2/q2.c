@@ -41,7 +41,6 @@ int fibo(int n)
 }
 
 // Gets input from user and returns it
-// Gets input from user and returns it
 int get_int(char *prompt)
 {
     int i;
