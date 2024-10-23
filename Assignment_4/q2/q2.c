@@ -17,10 +17,12 @@ int main(void)
 
     printf("First %i terms: ", n);
 
+    // prints numbers until n
     for (int i = 1; i < n; i++)
     {
         printf("%i, ", fibo(i));
     }
+    // Prints the last number without comma
     printf("%i\n", fibo(n));
 }
 
