@@ -1,45 +1,52 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // Function prototypes
 int get_int(char *prompt);
-int fibo(int n);
+void fibo(int n);
 
 int main(void)
 {
-    int n;
+    int num;
 
     // Gets input from user until the input is greater than 0
     do
     {
-        n = get_int("Please input a positive integer: ");
+        num = get_int("Please input a positive integer: ");
     }
-    while (n < 1);
+    while (num < 1);
 
-    printf("First %i terms: ", n);
-
-    // prints numbers until n
-    for (int i = 1; i < n; i++)
+    if (num != 1)
     {
-        printf("%i, ", fibo(i));
-    }
-    // Prints the last number without comma
-    printf("%i\n", fibo(n));
-}
-
-int fibo(int n)
-{
-    if (n == 1)
-    {
-        return 0;
-    }
-    else if (n == 2)
-    {
-        return 1;
+        printf("First %i terms: ", num);
     }
     else
     {
-        return fibo(n-1) + fibo(n-2);
+        printf("First %i term: ", num);
     }
+
+    fibo(num);
+}
+
+// Fibonacci sequence
+void fibo(int n) {
+    int first = 0;
+    int second = 1;
+    int next_term;
+
+    printf("%i", first);
+    if (n > 1)
+    {
+        printf(", %i", second);
+    }
+
+    for (int i = 3; i <= n; ++i) {
+        next_term = first + second;
+        printf(", %i", next_term);
+        first = second;
+        second = next_term;
+    }
+    printf("\n");
 }
 
 // Gets input from user and returns it

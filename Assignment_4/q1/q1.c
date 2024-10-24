@@ -6,23 +6,23 @@ int fact(int n);
 
 int main(void)
 {
-    int n;
+    int num;
 
     // Gets input from user until the input is greater than 0
     do
     {
-        n = get_int("Please input a positive integer: ");
+        num = get_int("Please input a positive integer: ");
     }
-    while (n < 1);
+    while (num < 1);
 
     // Checks n to determine factorial or square
-    if (n < 10)
+    if (num < 10)
     {
-        printf("Factorial of %i is %i\n", n, fact(n));
+        printf("Factorial of %i is %i\n", num, fact(num));
     }
     else
     {
-        printf("Square of %i is %i\n", n, n * n);
+        printf("Square of %i is %i\n", num, num * num);
     }
 }
 
