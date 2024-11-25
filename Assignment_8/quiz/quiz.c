@@ -4,7 +4,7 @@
 #define SIZE 5
 
 int is_same(int *array1, int *array2, int size);
-void sort(int *array, int size);
+void rotate(int *array, int size);
 int *get_array(char *prompt, int size);
 
 int main(void)
@@ -14,21 +14,26 @@ int main(void)
 
     if (is_same(A, B, SIZE))
     {
-        printf("B is equal to A.\n");
+        printf("Yes.\n");
         return 0;
     }
 
-    sort(A, SIZE);
-    sort(B, SIZE);
+    for (int i = 0; i < SIZE; i++)
+    {
+        rotate(B, SIZE);
 
-    if (is_same(A, B, SIZE))
-    {
-        printf("Yes, array B can be made equal to array A.\n");
+        if (is_same(A, B, 5))
+        {
+            printf("Yes.\n");
+
+            free(A);
+            free(B);
+
+            return 0;
+        }
     }
-    else
-    {
-        printf("No, array B cannot be made equal to array A.\n");
-    }
+
+    printf("No.\n");
 
     free(A);
     free(B);
@@ -46,20 +51,14 @@ int is_same(int *array1, int *array2, int size)
     return 1;
 }
 
-void sort(int *array, int size)
+void rotate(int *array, int size)
 {
+    int first = array[0];
     for (int i = 0; i < size - 1; i++)
     {
-        for (int j = 0; j < size - i - 1; j++)
-        {
-            if (array[j] > array[j + 1])
-            {
-                int temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
-            }
-        }
+        array[i] = array[i + 1];
     }
+    array[size - 1] = first;
 }
 
 
