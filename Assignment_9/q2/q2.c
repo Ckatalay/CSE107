@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define TEXT "happynewyear"
+
 int count(char *string, char goal);
 char get_char(char *prompt);
 char *get_string(char *prompt);
 
 int main(void)
 {
-    char *text = "happynewyear";
     char val = get_char("Please input a character to count: ");
 
-    printf("The character '%c' appears %d times in text.\n", val, count(text, val));
+    printf("The character '%c' appears %d times in text.\n", val, count(TEXT, val));
 }
 
 int count(char *string, char goal)
