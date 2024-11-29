@@ -3,7 +3,6 @@
 
 #define SIZE 3
 
-float *calc(int arr[SIZE][SIZE][SIZE], int freq, int size, int *mode_count);
 int get_int(char *prompt);
 void sort(int *array, int size);
 
@@ -16,26 +15,11 @@ int main(void)
         {{12, 7, 15}, {10, 12, 15}, {10, 10, 12}}
     };
 
-    int check = get_int("Enter a weight to check its frequency: ");
-    int mode_count;
-
-    float *calcs = calc(cube, check, SIZE, &mode_count);
-
-    printf("1. Mean: %.2f\n2. Median: %.2f\n3. Range: [%.0f, %.0f]\n4. Modes: ", calcs[0], calcs[1], calcs[2], calcs[3]);
-    for (int i = 0; i < mode_count; i++) {
-        printf("%.0f ", calcs[4 + i]);
-    }
-    printf("\n5. The weight value of %d occurs %d times within the cube.\n", check, (int)calcs[4 + mode_count]);
-    free(calcs);
-}
-
-float *calc(int arr[SIZE][SIZE][SIZE], int freq, int size, int *mode_count)
-{
     int value;
-    int count = size * size * size;
+    int count = SIZE * SIZE * SIZE;
     int occur[100] = {0};
     int sum = 0;
-    int initial = arr[0][0][0];
+    int initial = cube[0][0][0];
     int max = initial;
     int min = initial;
     int all[count];
@@ -47,7 +31,7 @@ float *calc(int arr[SIZE][SIZE][SIZE], int freq, int size, int *mode_count)
         {
             for (int k = 0; k < SIZE; k++)
             {
-                value = arr[i][j][k];
+                value = cube[i][j][k];
                 all[n++] = value;
                 sum += value;
 
@@ -85,30 +69,22 @@ float *calc(int arr[SIZE][SIZE][SIZE], int freq, int size, int *mode_count)
         }
     }
 
-    *mode_count = 0;
+    int mode_count = 0;
     for (int i = 0; i < 100; i++) {
         if (occur[i] == max_occur) {
-            (*mode_count)++;
+            mode_count++;
         }
     }
 
-    float *result = malloc((6 + *mode_count - 1) * sizeof(float));
-
-    result[0] = (float)sum / count;
-    result[1] = median;
-    result[2] = min;
-    result[3] = max;
-
-    int mode_index = 4;
+    float mean = (float)sum / count;
+    printf("1. Mean: %.2f\n2. Median: %.2f\n3. Range: [%.0f, %.0f]\n4. Modes: ", mean, median, (float)min, (float)max);
     for (int i = 0; i < 100; i++) {
         if (occur[i] == max_occur) {
-            result[mode_index++] = i;
+            printf("%.0f ", (float)i);
         }
     }
-
-    result[4 + *mode_count] = occur[freq];
-
-    return result;
+    int check = get_int("\n5. Enter a weight to check its frequency: ");
+    printf("\nThe weight value of %d occurs %d times within the cube.\n", check, occur[check]);
 }
 
 void sort(int *array, int size)

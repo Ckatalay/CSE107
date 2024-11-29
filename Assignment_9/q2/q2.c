@@ -5,7 +5,6 @@
 
 int count(char *string, char goal);
 char get_char(char *prompt);
-char *get_string(char *prompt);
 
 int main(void)
 {
