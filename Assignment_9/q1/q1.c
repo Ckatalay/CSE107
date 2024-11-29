@@ -84,7 +84,7 @@ int main(void)
         }
     }
     int check = get_int("\n5. Enter a weight to check its frequency: ");
-    printf("\nThe weight value of %d occurs %d times within the cube.\n", check, occur[check]);
+    printf("The weight value of %d occurs %d times within the cube.\n", check, occur[check]);
 }
 
 void sort(int *array, int size)
