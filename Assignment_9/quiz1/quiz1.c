@@ -33,6 +33,7 @@ int main(void)
                     {
                         printf("%c ", students[i][j]);
                     }
+                    printf("\n");
                 }
                 printf("\n");
                 break;
