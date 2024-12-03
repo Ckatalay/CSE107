@@ -24,6 +24,7 @@ int main(void)
     int all[count];
     int n = 0;
 
+    // Loops the entire 3D array
     for (int i = 0; i < SIZE; i++)
     {
         for (int j = 0; j < SIZE; j++)
@@ -31,7 +32,7 @@ int main(void)
             for (int k = 0; k < SIZE; k++)
             {
                 value = cube[i][j][k];
-                all[n++] = value;
+                all[n++] = value; // Turns the 3D array into 1D
                 sum += value;
 
                 if (value > max)
@@ -52,6 +53,7 @@ int main(void)
     sort(all, count);
     float median = 0;
 
+    // Finds median
     if (count % 2 == 0)
     {
         median = (all[count / 2 - 1] + all[count / 2]) / 2.0;
@@ -86,6 +88,7 @@ int main(void)
     printf("The weight value of %d occurs %d times within the cube.\n", check, occur[check]);
 }
 
+// Bubble-sort algorithm
 void sort(int *array, int size)
 {
     for (int i = 0; i < size - 1; i++)
@@ -110,7 +113,7 @@ int get_int(char *prompt)
     while (1)
     {
         printf("%s", prompt);
-        if (scanf("%i", &i) == 1)
+        if (scanf("%d", &i) == 1)
         {
             // Valid integer input
             break;
