@@ -66,7 +66,8 @@ node* create_node(int num)
         }
         temp = element;
     }
-    if (temp != NULL) {
+    if (temp != NULL)
+    {
         temp->next = NULL;
     }
     return head;
