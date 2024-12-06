@@ -27,7 +27,7 @@ int main(void)
     node *list = create_node(n);
     node *current = list;
 
-    int i = 0;
+    int i;
     while (current != NULL)
     {
         printf("Data = %i\n", current->val);
@@ -37,10 +37,9 @@ int main(void)
     printf("Total number of nodes = %i\n", i);
 
     free(list);
-    
 }
 
-node* create_node(int num)
+node *create_node(int num)
 {
     node *head = NULL;
     node *temp = NULL;

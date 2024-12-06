@@ -9,7 +9,7 @@ typedef struct node
 
 int get_int(char *prompt);
 node* create_node(int num);
-void tnirp(node *head);
+void insert_after(node *prev, int val);
 
 int main(void)
 {
@@ -26,12 +26,43 @@ int main(void)
     }
 
     node *list = create_node(n);
+    node *current = list;
+    node *prev = list;
 
-    tnirp(list);
+    int m = 0;
+
+    while (m < 1)
+    {
+        m = get_int("Insert after nth indice : ");
+
+        if (m < 1)
+        {
+            printf("Please input a positive integer.\n");
+        }
+    }
+
+    int value = get_int("Please input a value: ");
+
+    for (int i = 0; i < m; i++)
+    {
+        prev = prev->next;
+    }
+
+    insert_after(prev, value);
+
+    int j = 0;
+    while (current != NULL)
+    {
+        printf("Data = %i\n", current->val);
+        current = current->next;
+        j++;
+    }
+    printf("Total number of nodes = %i\n", j);
+
     free(list);
 }
 
-node* create_node(int num)
+node *create_node(int num)
 {
     node *head = NULL;
     node *temp = NULL;
@@ -64,14 +95,18 @@ node* create_node(int num)
     return head;
 }
 
-void tnirp(node *head)
+void insert_after(node *prev, int val)
 {
-   	if (head == NULL)
-	{
+    node *element = (node *)malloc(sizeof(node));
+    if (element == NULL)
+    {
+        printf("Memory allocation failed.\n");
         return;
-	}
-    tnirp(head->next);
-    printf("Data = %i\n", head->val);
+    }
+    element->val = val;
+    node *temp = prev->next;
+    prev->next = element;
+    element->next = temp;
 }
 
 // Gets input from user and returns it
