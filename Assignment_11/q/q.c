@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 int get_int(char *prompt);
 float get_float(char *prompt);
@@ -78,6 +77,13 @@ char *get_string(char *prompt)
     char *buffer = malloc(50 * sizeof(char));
     printf("%s", prompt);
     fgets(buffer, 50, stdin);
-    buffer[strcspn(buffer, "\n")] = '\0';
+
+    for (int i = 0; i < 50; i++)
+    {
+        if (buffer[i] == '\n')
+        {
+            buffer[i] = '\0';
+        }
+    }
     return buffer;
 }
