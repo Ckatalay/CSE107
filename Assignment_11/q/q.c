@@ -10,11 +10,14 @@ int main(void)
     int id = get_int("Student ID: ");
     char *name = get_string("Name: ");
     char *surname = get_string("Surname: ");
-    float gpa = get_float("GPA: ");
+    float gpa = -1;
     while (gpa < 0 || gpa > 4)
     {
-        printf("Invalid GPA, please input a value between 0 and 4.\n");
         gpa = get_float("GPA: ");
+        if (gpa < 0 || gpa > 4)
+        {
+            printf("Invalid GPA, please input a value between 0 and 4.\n");
+        }
     }
 
     printf("Student Information:\n");
