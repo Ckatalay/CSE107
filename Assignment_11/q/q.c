@@ -75,6 +75,7 @@ float get_float(char *prompt)
     }
 }
 
+// Gets input from user and returns it
 char *get_string(char *prompt)
 {
     char *buffer = malloc(50 * sizeof(char));
