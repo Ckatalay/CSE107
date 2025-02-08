@@ -58,9 +58,12 @@ node *create_node(int num)
         snprintf(buffer, sizeof(buffer), "Input data for %i: ", i);
         element->val = get_int(buffer);
 
-        if (head == NULL) {
+        if (head == NULL)
+        {
             head = element;
-        } else {
+        }
+        else
+        {
             temp->next = element;
         }
         temp = element;

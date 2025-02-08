@@ -8,7 +8,7 @@ int main(void)
     int num;
     do 
     {
-        num = get_int("Please enter how many primes you want to see: ");
+        num = get_int("Please enter number to check: ");
     }
     while (num < 1);
     int remain = num % 7;
